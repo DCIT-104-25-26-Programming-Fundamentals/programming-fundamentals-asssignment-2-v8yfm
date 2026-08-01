@@ -76,7 +76,149 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip>
+using namespace std;
 
+// Structure to store student information
+struct Student {
+    string name;
+    int id;
+    vector<double> scores;
+};
+
+// Function to calculate average score
+double calculateAverage(const Student &student) {
+    if (student.scores.empty())
+        return 0.0;
+
+    double sum = 0;
+    for (double score : student.scores) {
+        sum += score;
+    }
+
+    return sum / student.scores.size();
+}
+
+// Function to add a student
+void addStudent(vector<Student> &students) {
+    Student s;
+    int numScores;
+
+    cin.ignore();
+
+    cout << "Enter student's full name: ";
+    getline(cin, s.name);
+
+    cout << "Enter student ID: ";
+    cin >> s.id;
+
+    cout << "How many scores? ";
+    cin >> numScores;
+
+    cout << "Enter the scores:\n";
+    for (int i = 0; i < numScores; i++) {
+        double score;
+        cin >> score;
+        s.scores.push_back(score);
+    }
+
+    students.push_back(s);
+    cout << "Student added successfully.\n";
+}
+
+// Function to display all students
+void displayStudents(const vector<Student> &students) {
+    if (students.empty()) {
+        cout << "\nNo student records available.\n";
+        return;
+    }
+
+    cout << "\n========== STUDENT RECORDS ==========\n";
+
+    for (const Student &s : students) {
+        cout << "Name: " << s.name << endl;
+        cout << "ID: " << s.id << endl;
+
+        cout << "Scores: ";
+        for (double score : s.scores) {
+            cout << score << " ";
+        }
+        cout << endl;
+
+        cout << "Average: " << fixed << setprecision(2)
+             << calculateAverage(s) << endl;
+
+        cout << "-----------------------------------\n";
+    }
+}
+
+// Function to search for a student by ID
+void searchStudent(const vector<Student> &students) {
+    int searchID;
+    cout << "Enter student ID to search: ";
+    cin >> searchID;
+
+    for (const Student &s : students) {
+        if (s.id == searchID) {
+            cout << "\nStudent Found!\n";
+            cout << "Name: " << s.name << endl;
+            cout << "ID: " << s.id << endl;
+
+            cout << "Scores: ";
+            for (double score : s.scores) {
+                cout << score << " ";
+            }
+
+            cout << "\nAverage: " << fixed << setprecision(2)
+                 << calculateAverage(s) << endl;
+            return;
+        }
+    }
+
+    cout << "Student not found.\n";
+}
+
+int main() {
+    vector<Student> students;
+    int choice;
+
+    do {
+        cout << "\n====== STUDENT MANAGEMENT SYSTEM ======\n";
+        cout << "1. Add Student\n";
+        cout << "2. Display All Students\n";
+        cout << "3. Search Student by ID\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addStudent(students);
+                break;
+
+            case 2:
+                displayStudents(students);
+                break;
+
+            case 3:
+                searchStudent(students);
+                break;
+
+            case 4:
+                cout << "Exiting program...\n";
+                break;
+
+            default:
+                cout << "Invalid choice. Try again.\n";
+        }
+
+    } while (choice != 4);
+
+    return 0;
+}
 #include <iostream>
 #include <vector>
 #include <string>
