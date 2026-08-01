@@ -59,7 +59,68 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+#include <iostream>
+using namespace std;
 
+// Function to transpose a matrix
+void transposeMatrix(int matrix[][10], int rows, int cols) {
+    cout << "\nTranspose of the Matrix:\n";
+    for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < rows; i++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+// Function to add two matrices
+void addMatrices(int matrix1[][10], int matrix2[][10], int rows, int cols) {
+    int sum[10][10];
+
+    cout << "\nSum of the Two Matrices:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            sum[i][j] = matrix1[i][j] + matrix2[i][j];
+            cout << sum[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int rows, cols;
+    int matrix1[10][10], matrix2[10][10];
+
+    cout << "Enter the number of rows: ";
+    cin >> rows;
+
+    cout << "Enter the number of columns: ";
+    cin >> cols;
+
+    // Input first matrix
+    cout << "\nEnter elements of the first matrix:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> matrix1[i][j];
+        }
+    }
+
+    // Input second matrix
+    cout << "\nEnter elements of the second matrix:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> matrix2[i][j];
+        }
+    }
+
+    // Display transpose of the first matrix
+    transposeMatrix(matrix1, rows, cols);
+
+    // Display sum of the two matrices
+    addMatrices(matrix1, matrix2, rows, cols);
+
+    return 0;
+}
 #include <iostream>
 #include <iomanip>
 #include <string>
