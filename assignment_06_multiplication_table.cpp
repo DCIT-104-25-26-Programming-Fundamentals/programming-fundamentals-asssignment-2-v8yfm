@@ -53,7 +53,32 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+ #include <iostream>
+using namespace std;
 
+// Function to print the multiplication table
+void printTable(int number, int limit) {
+    cout << "\nMultiplication Table for " << number << endl;
+
+    for (int i = 1; i <= limit; i++) {
+        cout << number << " x " << i << " = " << number * i << endl;
+    }
+}
+
+int main() {
+    int number, limit;
+
+    cout << "Enter a number: ";
+    cin >> number;
+
+    cout << "Enter the limit of the multiplication table: ";
+    cin >> limit;
+
+    // Call the function
+    printTable(number, limit);
+
+    return 0;
+}
 #include <iostream>
 using namespace std;
 
