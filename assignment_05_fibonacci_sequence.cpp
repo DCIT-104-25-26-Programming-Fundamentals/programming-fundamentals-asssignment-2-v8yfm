@@ -47,6 +47,60 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+#include <iostream>
+using namespace std;
+
+// Function to print the first N Fibonacci numbers
+void printFibonacci(int n) {
+    int first = 0, second = 1, next;
+
+    cout << "First " << n << " Fibonacci terms: ";
+
+    for (int i = 1; i <= n; i++) {
+        cout << first << " ";
+        next = first + second;
+        first = second;
+        second = next;
+    }
+    cout << endl;
+}
+
+// Function to check if a number belongs to the Fibonacci sequence
+bool isFibonacci(int num) {
+    int first = 0, second = 1, next;
+
+    if (num == 0 || num == 1)
+        return true;
+
+    while (second < num) {
+        next = first + second;
+        first = second;
+        second = next;
+    }
+
+    return (second == num);
+}
+
+int main() {
+    int n, number;
+
+    // Part A
+    cout << "Enter the number of Fibonacci terms to print: ";
+    cin >> n;
+
+    printFibonacci(n);
+
+    // Part B
+    cout << "\nEnter a number to check if it belongs to the Fibonacci sequence: ";
+    cin >> number;
+
+    if (isFibonacci(number))
+        cout << number << " belongs to the Fibonacci sequence." << endl;
+    else
+        cout << number << " does NOT belong to the Fibonacci sequence." << endl;
+
+    return 0;
+}
 
 #include <iostream>
 using namespace std;
