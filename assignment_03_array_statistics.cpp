@@ -38,7 +38,67 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+#include <iostream>
+using namespace std;
 
+// Function to calculate the sum
+double calculateSum(double arr[], int n) {
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// Function to calculate the average
+double calculateAverage(double arr[], int n) {
+    return calculateSum(arr, n) / n;
+}
+
+// Function to find the largest number
+double findMaximum(double arr[], int n) {
+    double max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+// Function to find the smallest number
+double findMinimum(double arr[], int n) {
+    double min = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+int main() {
+    int n;
+
+    cout << "Enter the number of values: ";
+    cin >> n;
+
+    double numbers[n];
+
+    cout << "Enter " << n << " numbers:" << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
+
+    cout << "\nStatistical Results" << endl;
+    cout << "-------------------" << endl;
+    cout << "Sum: " << calculateSum(numbers, n) << endl;
+    cout << "Average: " << calculateAverage(numbers, n) << endl;
+    cout << "Maximum: " << findMaximum(numbers, n) << endl;
+    cout << "Minimum: " << findMinimum(numbers, n) << endl;
+
+    return 0;
+}
 #include <iostream>
 using namespace std;
 
